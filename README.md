@@ -163,6 +163,3 @@ Optional: `POST /simulation/run` body `{"persist_path": "artifacts/run.json"}` w
 
 Feature vector length must match `EngineConfig.feature_dim` (default **64**).
 
-## CV one-liner
-
-Bounded-memory continual incident classifier with FastAPI control plane, standard forgetting metrics, forgetting-risk alerts on legacy holdout accuracy, and a Streamlit client that never imports the model.
