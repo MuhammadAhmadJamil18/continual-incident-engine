@@ -1,0 +1,85 @@
+{
+  "metrics": {
+    "accuracy_matrix": [
+      {
+        "0": 0.12
+      },
+      {
+        "0": 0.07,
+        "1": 0.025
+      },
+      {
+        "0": 0.035,
+        "1": 0.045,
+        "2": 0.05
+      }
+    ],
+    "bwt": -0.0325,
+    "mean_forgetting": 0.028333333333333332,
+    "avg_acc_all_seen": 0.043333333333333335,
+    "legacy_accuracy_history": [
+      0.12,
+      0.07,
+      0.035
+    ],
+    "current_legacy_accuracy": 0.035,
+    "peak_legacy_accuracy": 0.12,
+    "highest_closed_era": 2,
+    "buffer_era_histogram": {
+      "0": 89,
+      "1": 103,
+      "2": 208
+    },
+    "last_legacy_per_class": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0,
+      "5": 0.0,
+      "6": 0.0,
+      "7": 0.875
+    },
+    "peak_legacy_per_class": {
+      "0": 0.2972972972972973,
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.4,
+      "4": 0.0,
+      "5": 0.0,
+      "6": 0.0,
+      "7": 0.875
+    },
+    "encoder_kind": "hashing",
+    "model_in_dim": 64,
+    "loaded_from_disk": false
+  },
+  "forgetting_alert": {
+    "risk_level": "high",
+    "message": "System is forgetting legacy incidents \u2014 raise replay budget or review recent shifts. Affected eras (vs historical peak): [0]. Worst legacy classes: class_0, class_3.",
+    "drop_percentage": 70.833,
+    "affected_eras": [
+      0
+    ],
+    "affected_incident_types": [
+      "class_0",
+      "class_3"
+    ],
+    "confidence": 1.0,
+    "legacy_accuracy": 0.035,
+    "peak_legacy_accuracy": 0.12,
+    "explanation": "Legacy acc 0.035 vs peak 0.120 (29.2% of peak), drop 70.8%.",
+    "thresholds": {
+      "legacy_ratio_low": 0.85,
+      "legacy_ratio_medium": 0.7,
+      "era_drop_ratio": 0.85,
+      "class_drop_ratio": 0.9
+    }
+  },
+  "bwt": -0.0325,
+  "eras_trained": [
+    0,
+    1,
+    2
+  ]
+}

@@ -1,0 +1,35 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+dist/
+*.egg-info/
+.DS_Store
+Thumbs.db
+
+# Secrets / local env (never push)
+.env
+.env.*
+!.env.example
+
+# Large or machine-local artifacts (regenerate via ingest / training)
+artifacts/github_issues.json
+artifacts/engine_meta.json
+artifacts/engine_weights.pt
+artifacts/buffer.json
+artifacts/*.pkl
+artifacts/last_run.json
+artifacts/*.pt
+
+# Local portfolio notes (not for public repo)
+PORTFOLIO_WRITEUP.md
+
+# IDE / agent (optional: keep repo author-only story clean)
+.cursor/
+.idea/
+.vscode/
+*.swp
+
+# Keep small fixtures & portfolio evidence (override if you add broad artifacts/* later)
+# — github_issues_min.json, real_experiment_results.json, forgetting_curve.png

@@ -1,0 +1,437 @@
+{
+  "samples": [
+    {
+      "text": "era0 incident 0 pod scrape dashboard timeout",
+      "label": 0,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 1 pod scrape dashboard timeout",
+      "label": 1,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 2 pod scrape dashboard timeout",
+      "label": 2,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 3 pod scrape dashboard timeout",
+      "label": 3,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 4 pod scrape dashboard timeout",
+      "label": 4,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 5 pod scrape dashboard timeout",
+      "label": 5,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 6 pod scrape dashboard timeout",
+      "label": 6,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 7 pod scrape dashboard timeout",
+      "label": 7,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 8 pod scrape dashboard timeout",
+      "label": 0,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 9 pod scrape dashboard timeout",
+      "label": 1,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 10 pod scrape dashboard timeout",
+      "label": 2,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 11 pod scrape dashboard timeout",
+      "label": 3,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 12 pod scrape dashboard timeout",
+      "label": 4,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 13 pod scrape dashboard timeout",
+      "label": 5,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 14 pod scrape dashboard timeout",
+      "label": 6,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 15 pod scrape dashboard timeout",
+      "label": 7,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 16 pod scrape dashboard timeout",
+      "label": 0,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 17 pod scrape dashboard timeout",
+      "label": 1,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 18 pod scrape dashboard timeout",
+      "label": 2,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 19 pod scrape dashboard timeout",
+      "label": 3,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 20 pod scrape dashboard timeout",
+      "label": 4,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 21 pod scrape dashboard timeout",
+      "label": 5,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 22 pod scrape dashboard timeout",
+      "label": 6,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era0 incident 23 pod scrape dashboard timeout",
+      "label": 7,
+      "era": 0,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 0 pod scrape dashboard timeout",
+      "label": 0,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 1 pod scrape dashboard timeout",
+      "label": 1,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 2 pod scrape dashboard timeout",
+      "label": 2,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 3 pod scrape dashboard timeout",
+      "label": 3,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 4 pod scrape dashboard timeout",
+      "label": 4,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 5 pod scrape dashboard timeout",
+      "label": 5,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 6 pod scrape dashboard timeout",
+      "label": 6,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 7 pod scrape dashboard timeout",
+      "label": 7,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 8 pod scrape dashboard timeout",
+      "label": 0,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 9 pod scrape dashboard timeout",
+      "label": 1,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 10 pod scrape dashboard timeout",
+      "label": 2,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 11 pod scrape dashboard timeout",
+      "label": 3,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 12 pod scrape dashboard timeout",
+      "label": 4,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 13 pod scrape dashboard timeout",
+      "label": 5,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 14 pod scrape dashboard timeout",
+      "label": 6,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 15 pod scrape dashboard timeout",
+      "label": 7,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 16 pod scrape dashboard timeout",
+      "label": 0,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 17 pod scrape dashboard timeout",
+      "label": 1,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 18 pod scrape dashboard timeout",
+      "label": 2,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 19 pod scrape dashboard timeout",
+      "label": 3,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 20 pod scrape dashboard timeout",
+      "label": 4,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 21 pod scrape dashboard timeout",
+      "label": 5,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 22 pod scrape dashboard timeout",
+      "label": 6,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era1 incident 23 pod scrape dashboard timeout",
+      "label": 7,
+      "era": 1,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 0 pod scrape dashboard timeout",
+      "label": 0,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 1 pod scrape dashboard timeout",
+      "label": 1,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 2 pod scrape dashboard timeout",
+      "label": 2,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 3 pod scrape dashboard timeout",
+      "label": 3,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 4 pod scrape dashboard timeout",
+      "label": 4,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 5 pod scrape dashboard timeout",
+      "label": 5,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 6 pod scrape dashboard timeout",
+      "label": 6,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 7 pod scrape dashboard timeout",
+      "label": 7,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 8 pod scrape dashboard timeout",
+      "label": 0,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 9 pod scrape dashboard timeout",
+      "label": 1,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 10 pod scrape dashboard timeout",
+      "label": 2,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 11 pod scrape dashboard timeout",
+      "label": 3,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 12 pod scrape dashboard timeout",
+      "label": 4,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 13 pod scrape dashboard timeout",
+      "label": 5,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 14 pod scrape dashboard timeout",
+      "label": 6,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 15 pod scrape dashboard timeout",
+      "label": 7,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 16 pod scrape dashboard timeout",
+      "label": 0,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 17 pod scrape dashboard timeout",
+      "label": 1,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 18 pod scrape dashboard timeout",
+      "label": 2,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 19 pod scrape dashboard timeout",
+      "label": 3,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 20 pod scrape dashboard timeout",
+      "label": 4,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 21 pod scrape dashboard timeout",
+      "label": 5,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 22 pod scrape dashboard timeout",
+      "label": 6,
+      "era": 2,
+      "source": "seed"
+    },
+    {
+      "text": "era2 incident 23 pod scrape dashboard timeout",
+      "label": 7,
+      "era": 2,
+      "source": "seed"
+    }
+  ],
+  "label_map": {}
+}
