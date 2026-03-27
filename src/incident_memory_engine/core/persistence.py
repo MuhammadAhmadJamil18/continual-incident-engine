@@ -111,6 +111,7 @@ def _cfg_payload(cfg: EngineConfig) -> dict[str, Any]:
         "hidden_dim": cfg.hidden_dim,
         "replay_capacity": cfg.replay_capacity,
         "replay_batch_ratio": cfg.replay_batch_ratio,
+        "replay_enabled": cfg.replay_enabled,
         "seed": cfg.seed,
         "forgetting_alert_low": cfg.forgetting_alert_low,
         "forgetting_alert_medium": cfg.forgetting_alert_medium,

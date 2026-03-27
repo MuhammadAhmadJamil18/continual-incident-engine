@@ -16,6 +16,8 @@ class EngineConfig:
     hidden_dim: int = 128
     replay_capacity: int = 800
     replay_batch_ratio: float = 0.55
+    # False = naive finetuning: no rehearsal, buffer not used in loss or filled.
+    replay_enabled: bool = True
     seed: int = 42
     # Elastic Weight Consolidation (Kirkpatrick et al.): penalty toward anchor params
     # weighted by diagonal Fisher. Use with replay for a standard CL stack. 0 = off.

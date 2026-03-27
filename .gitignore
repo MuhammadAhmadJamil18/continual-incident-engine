@@ -15,6 +15,7 @@ Thumbs.db
 
 # Large or machine-local artifacts (regenerate via ingest / training)
 artifacts/github_issues.json
+artifacts/github_issues_1500.json
 artifacts/engine_meta.json
 artifacts/engine_weights.pt
 artifacts/buffer.json

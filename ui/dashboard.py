@@ -8,6 +8,7 @@ Run: ``uvicorn incident_memory_engine.api.app:app --port 8000`` then
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -23,8 +24,9 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-DEFAULT_API = "http://127.0.0.1:8000"
+DEFAULT_API = os.environ.get("IME_API_BASE", "http://127.0.0.1:8000")
 DEFAULT_PERSIST = "artifacts/last_run.json"
+ABLATION_JSON = _ROOT / "artifacts" / "github_replay_ablation_1500.json"
 
 # Plotly presentation defaults
 _CHART_FONT = dict(family="Segoe UI, Inter, system-ui, sans-serif", size=13, color="#0f172a")
@@ -69,6 +71,25 @@ def _inject_css() -> None:
             border-right: 1px solid #e2e8f0;
             background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
         }
+        .hero-wrap {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 42%, #0f172a 100%);
+            color: #f8fafc;
+            padding: 2rem 2.25rem;
+            border-radius: 16px;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 12px 40px rgba(15,23,42,0.18);
+        }
+        .hero-wrap h2 { color: #f8fafc !important; margin-top: 0 !important; font-size: 1.65rem !important; }
+        .hero-wrap .sub { color: #cbd5e1; font-size: 1.05rem; line-height: 1.65; margin: 0.75rem 0 0 0; }
+        .purpose-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.15rem 1.25rem;
+            min-height: 168px;
+        }
+        .purpose-card h4 { margin-top: 0; color: #0f172a; font-size: 1rem !important; }
+        .purpose-card p { color: #475569; font-size: 0.95rem; line-height: 1.55; margin-bottom: 0; }
         </style>
         """,
         unsafe_allow_html=True,
@@ -519,20 +540,130 @@ def _render_analytics_dashboard(
         st.plotly_chart(fig_b, use_container_width=True, key=f"{chart_scope}_buffer")
 
 
+def _linkedin_blurb_from_artifacts() -> str | None:
+    """Optional one-liner from a prior GitHub ablation JSON (if present)."""
+    if not ABLATION_JSON.is_file():
+        return None
+    try:
+        data = json.loads(ABLATION_JSON.read_text(encoding="utf-8"))
+        cap = data.get("caption_metrics") or {}
+        line = cap.get("suggested_one_liner_filled")
+        if isinstance(line, str) and line.strip():
+            return line.strip()
+    except (OSError, json.JSONDecodeError, TypeError):
+        return None
+    return None
+
+
+def _render_why_share_tab() -> None:
+    """Purpose-first view for demos, LinkedIn, and deployed visitors."""
+    st.markdown(
+        """
+        <div class="hero-wrap">
+        <h2>Make forgetting visible — not invisible</h2>
+        <p class="sub">
+        Static &ldquo;train once&rdquo; models look fine until the world moves: new services, new words, new failure modes.
+        This project is a <strong>continual learning</strong> lab for <strong>incident classification</strong>:
+        bounded replay, optional EWC, era-based drift, and metrics (accuracy matrix, BWT, legacy holdout) so you can
+        <strong>see</strong> when old knowledge slips — instead of guessing from a silent dashboard.
+        </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown(
+            """
+            <div class="purpose-card">
+            <h4>The problem</h4>
+            <p>Production changes faster than your last training job. A model that never updates looks stable while quietly misclassifying new incidents.</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    with c2:
+        st.markdown(
+            """
+            <div class="purpose-card">
+            <h4>What this app does</h4>
+            <p>Stream incidents in <strong>eras</strong>, train with replay, evaluate on held-out tests per era, and surface a <strong>forgetting alert</strong> when legacy accuracy drops.</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    with c3:
+        st.markdown(
+            """
+            <div class="purpose-card">
+            <h4>What to try live</h4>
+            <p>Open <strong>Home</strong> for a one-click simulation, or <strong>Predict &amp; similar</strong> to classify text and retrieve nearest incidents from the replay buffer.</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    st.divider()
+    st.markdown("##### LinkedIn-ready blurb (copy & edit)")
+    default_blurb = """Static "train once" models hide when the world moves — incident language and failure modes drift, but the UI still looks green.
+
+Incident Memory Engine is an open continual-learning demo: reservoir replay, optional EWC, era-based evaluation, and CL metrics (accuracy matrix, BWT, legacy holdout) plus a forgetting alert — so degradation is visible, not invisible.
+
+Stack: FastAPI backend + Streamlit UI (all inference via HTTP). Try the live demo: run a simulation, then Predict & similar."""
+
+    artifact_line = _linkedin_blurb_from_artifacts()
+    if artifact_line:
+        st.caption("Optional line from your latest `github_replay_ablation_1500.json` run (append or merge):")
+        st.info(artifact_line)
+
+    st.text_area(
+        "Edit and copy for LinkedIn",
+        value=default_blurb,
+        height=200,
+        key="linkedin_blurb",
+        label_visibility="collapsed",
+    )
+
+    with st.expander("How visitors use a deployed demo", expanded=False):
+        st.markdown(
+            """
+1. **You** deploy the API and this UI (see Docker Compose below). Set **`IME_API_BASE`** to the public API URL the Streamlit server can reach.
+2. **Visitors** open the Streamlit URL, read this tab, then use **Home → Run full synthetic simulation** (no API keys needed for the default demo).
+3. They switch to **Predict & similar** to type incident text and see predictions + nearest neighbors — interactive proof of the pipeline.
+
+The UI never imports PyTorch; it only talks to the API over HTTP — safe to expose as a portfolio demo.
+            """
+        )
+
+    with st.expander("Deploy with Docker (API + UI)", expanded=False):
+        st.code(
+            "# From repo root — builds one image, runs API :8000 and UI :8501\n"
+            "docker compose up --build\n\n"
+            "# Then open http://localhost:8501 (UI) — it calls the API inside the compose network.\n"
+            "# For a public host, set IME_API_BASE to your API URL when starting the UI container.",
+            language="bash",
+        )
+
+
 def main() -> None:
     st.set_page_config(
-        page_title="Incident Memory Engine",
+        page_title="Incident Memory Engine — continual learning demo",
         layout="wide",
         initial_sidebar_state="expanded",
     )
     _inject_css()
     st.title("Incident Memory Engine")
     st.caption(
-        "Continual learning control room · FastAPI backend · all ML via HTTP · "
-        "Data: public GitHub issues (kubernetes, prometheus, grafana) via GitHub REST Search API"
+        "Continual learning for incident classification · FastAPI + Streamlit · "
+        "purpose: make forgetting measurable · optional real data: public GitHub issues (k8s / Prometheus / Grafana)"
     )
 
-    base = st.sidebar.text_input("API base URL", value=DEFAULT_API)
+    base = st.sidebar.text_input(
+        "API base URL",
+        value=DEFAULT_API,
+        help="Override with IME_API_BASE env when deploying (e.g. http://api:8000 in Docker Compose).",
+    )
     st.session_state["api_key"] = st.sidebar.text_input(
         "X-API-Key (if server uses IME_API_KEYS)",
         value=st.session_state.get("api_key", ""),
@@ -576,8 +707,9 @@ def main() -> None:
         with st.sidebar.expander("Raw health JSON"):
             st.json(h)
 
-    tab_home, tab_data, tab_train, tab_analytics, tab_explore = st.tabs(
+    tab_why, tab_home, tab_data, tab_train, tab_analytics, tab_explore = st.tabs(
         [
+            "Why & share",
             "Home",
             "Data pipeline",
             "Training lab",
@@ -585,6 +717,9 @@ def main() -> None:
             "Predict & similar",
         ]
     )
+
+    with tab_why:
+        _render_why_share_tab()
 
     with tab_home:
         st.markdown(

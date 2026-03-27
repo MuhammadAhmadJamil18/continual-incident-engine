@@ -50,6 +50,14 @@ pip install -e ".[dev]"
 pytest
 ```
 
+## Replay vs naive finetuning (metrics for demos)
+
+```bash
+python scripts/run_replay_ablation.py
+```
+
+Writes **`artifacts/baseline_comparison.json`**: same synthetic run **with** reservoir replay vs **`replay_enabled=false`** (gradient on current batch only). Use `caption_metrics` / `suggested_one_liner_filled` for posts; re-run if you change `--steps`, `--eras`, or `--seed`.
+
 ## Run the API (Uvicorn)
 
 ```powershell
@@ -78,13 +86,16 @@ Or:
 streamlit run ui/dashboard.py
 ```
 
-## Docker (API only)
+## Docker (API + interactive UI)
 
 ```bash
 docker compose up --build
 ```
 
-OpenAPI docs: `http://127.0.0.1:8000/docs`
+- **API / OpenAPI:** `http://127.0.0.1:8000` — docs at `/docs`
+- **Streamlit (portfolio / LinkedIn demo):** `http://127.0.0.1:8501` — start on the **Why & share** tab for purpose + copy-ready blurb; **Home** runs a one-click simulation; **Predict & similar** is the interactive proof. The UI container sets **`IME_API_BASE=http://api:8000`** so it talks to the API inside Compose.
+
+Local UI only: `streamlit run ui/dashboard.py` (API on `8000` first). Override the API URL with env **`IME_API_BASE`** when the browser’s Streamlit server must reach a different host.
 
 ## Persistence
 
@@ -113,6 +124,7 @@ OpenAPI docs: `http://127.0.0.1:8000/docs`
 
 | Variable | Purpose |
 |----------|---------|
+| `IME_API_BASE` | **Streamlit only:** default API base URL (e.g. `http://api:8000` in Docker). Lets a deployed UI find the backend without manual sidebar edits. |
 | `IME_API_KEYS` | Comma-separated keys; if set, protected routes require `X-API-Key` or `Authorization: Bearer …`. **`/health` stays public.** |
 | `IME_RATE_LIMIT_PER_MINUTE` | Per-key (or per-IP if no key) request cap for protected routes (default `120`). |
 | `IME_EWC_LAMBDA` | If set, enables/overrides **EWC** strength (`EngineConfig.ewc_lambda`) at API startup for continual regularization alongside replay. |

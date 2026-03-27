@@ -55,3 +55,19 @@ EWC state (Fisher + anchors) is **persisted** in checkpoint meta when present.
 | Cheaper Fisher | Lower `ewc_fisher_batches`. |
 
 Use **replay + EWC together** for the most “textbook” continual-learning story in portfolios and stakeholder reviews.
+
+## Replay vs naive finetuning (caption metrics)
+
+Run a paired synthetic experiment (same seed, same steps per era):
+
+```bash
+python scripts/run_replay_ablation.py
+```
+
+This writes **`artifacts/baseline_comparison.json`** with:
+
+- Legacy **E0** holdout accuracy after each `close_era`, **with** vs **without** replay (`replay_enabled=False` = no buffer in loss, buffer not filled).
+- **Mean forgetting** and **BWT** for both runs.
+- **`caption_metrics.suggested_one_liner_filled`** — copy-paste line for posts (re-run after changing `--steps` / `--eras` / `--seed`).
+
+Numbers are **synthetic-stream** baselines; GitHub replay can behave differently. Always cite the JSON path and experiment block when sharing stats.

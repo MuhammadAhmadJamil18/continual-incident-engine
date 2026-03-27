@@ -5,3 +5,25 @@ services:
       - "8000:8000"
     environment:
       - PYTHONUNBUFFERED=1
+
+  ui:
+    build: .
+    command:
+      [
+        "streamlit",
+        "run",
+        "ui/dashboard.py",
+        "--server.port",
+        "8501",
+        "--server.address",
+        "0.0.0.0",
+        "--server.headless",
+        "true",
+      ]
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - IME_API_BASE=http://api:8000
+    depends_on:
+      - api

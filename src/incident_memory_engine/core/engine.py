@@ -481,7 +481,7 @@ class IncidentMemoryEngine:
             y_new = torch.tensor(labels, dtype=torch.long, device=self._device)
             self._current_era = era
 
-            if len(self.buffer) > 0:
+            if cfg.replay_enabled and len(self.buffer) > 0:
                 replay_n = min(
                     int(x_new.shape[0] * cfg.replay_batch_ratio),
                     len(self.buffer),
@@ -529,18 +529,19 @@ class IncidentMemoryEngine:
                 ewc_anchor=self._ewc_anchor or None,
             )
 
-            for i in range(x_new.shape[0]):
-                tier = mtiers[i] if i < len(mtiers) else "short_term"
-                self.buffer.add_sample(
-                    features=features_list[i],
-                    label=int(labels[i]),
-                    era=era,
-                    incident_id=iids[i] or str(uuid.uuid4()),
-                    timestamp=tstamps[i],
-                    incident_type=itypes[i],
-                    fix_text=fixs[i],
-                    memory_tier=tier,
-                )
+            if cfg.replay_enabled:
+                for i in range(x_new.shape[0]):
+                    tier = mtiers[i] if i < len(mtiers) else "short_term"
+                    self.buffer.add_sample(
+                        features=features_list[i],
+                        label=int(labels[i]),
+                        era=era,
+                        incident_id=iids[i] or str(uuid.uuid4()),
+                        timestamp=tstamps[i],
+                        incident_type=itypes[i],
+                        fix_text=fixs[i],
+                        memory_tier=tier,
+                    )
 
             self._rebuild_faiss_index()
             self._persist_checkpoint()
@@ -726,6 +727,7 @@ class IncidentMemoryEngine:
                 "loaded_from_disk": self._loaded_from_disk,
                 "continual_learning": {
                     "replay_buffer": True,
+                    "replay_enabled": self.cfg.replay_enabled,
                     "replay_capacity": self.cfg.replay_capacity,
                     "replay_batch_ratio": self.cfg.replay_batch_ratio,
                     "ewc_lambda": self.cfg.ewc_lambda,
